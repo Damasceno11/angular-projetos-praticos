@@ -68,10 +68,12 @@ Este repositório reúne uma coleção de exercícios práticos desenvolvidos em
 * Imagens de cada cerveja exibidas diretamente dos assets do Angular.
 * Utilização de **JSON API** para simulação de backend e persistência dos dados.
 
-📸 *Exemplos de telas (adicione suas imagens abaixo):*
+📸 Catálogo de Cervejas Artesanais 🍺
+
 
 <img width="1914" height="1046" alt="Captura de tela 2025-08-19 010757" src="https://github.com/user-attachments/assets/00721929-9f11-4c27-bc11-472b9047aa5b" />
 
+---
 
 <img width="1919" height="1045" alt="Captura de tela 2025-08-19 010813" src="https://github.com/user-attachments/assets/e1119a59-206e-4e6a-a6b5-592c97fe6dab" />
 
