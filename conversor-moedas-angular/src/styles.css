@@ -1,0 +1,28 @@
+.custom-btn {
+  background-color: #28a745;
+  border: none;
+  transition: 0.3s;
+  font-size: 1.25rem;
+  padding: 12px 0;
+}
+
+.custom-btn:hover {
+  background-color: #1e7e34;
+}
+
+.container {
+  max-width: 420px;
+}
+
+.custom-card {
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.label-text {
+  font-size: 1.2rem;
+}

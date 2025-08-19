@@ -1,0 +1,85 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow-lg custom-card">
+    <h1 class="mb-4 text-center">Cadastro de Pessoas</h1>
+
+    <!-- Mensagem -->
+    <div *ngIf="msg" class="alert alert-info py-2">{{ msg }}</div>
+
+    <!-- Formuláario -->
+    <div class="row g-3">
+      <div class="col-12">
+        <label class="form-label">Nome</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          [(ngModel)]="nome"
+          placeholder="Digite o nome"
+        />
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Idade</label>
+        <input
+          type="number"
+          class="form-control form-control-lg"
+          [(ngModel)]="idade"
+          min="0"
+          max="120"
+          placeholder="0"
+        />
+      </div>
+
+      <div class="col-12">
+        <button
+          class="btn btn-primary w-100 custom-btn"
+          [disabled]="!podeCadastrar"
+          (click)="adicionar()"
+        >
+          Cadastrar
+        </button>
+      </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Contadores -->
+    <div class="d-flex justify-content-between mb-3">
+      <span class="badge bg-success fs-6">>= 18= {{ maioresDeIdade }}</span>
+      <span class="badge bg-danger fs-6">&lt; 18= {{ menoresDeIdade }}</span>
+    </div>
+
+    <!-- Tabela -->
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Nome</th>
+            <th class="text-center">Idade</th>
+            <th class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pessoas">
+            <!-- Tive que deixar o fw-bold fora da condição para conseguir deixar o verde em negrito -->
+            <td
+              [class.fw-bold]="true"
+              [ngClass]="{
+                'text-success': p.idade >= 18,
+                'text-danger': p.idade < 18
+              }"
+            >
+              {{ p.nome }}
+            </td>
+            <td class="text-center">{{ p.idade }}</td>
+            <td class="text-end">
+              <button class="btn btn-outline-danger btn-sm" (click)="remover(p.id)">Remover</button>
+            </td>
+          </tr>
+          <tr *ngIf="pessoas.length === 0">
+            <td colspan="3" class="text-center text-muted">Nenhum registro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

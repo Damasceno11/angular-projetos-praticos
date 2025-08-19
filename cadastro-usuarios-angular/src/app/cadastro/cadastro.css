@@ -1,0 +1,16 @@
+.custom-card {
+  width: 100%;
+  max-width: 640px;
+}
+
+.custom-btn {
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  background-color: #4da6ff;
+  transition: 0.25s ease-in-out;
+}
+
+.custom-btn:hover {
+  background-color: #1a75ff;
+}

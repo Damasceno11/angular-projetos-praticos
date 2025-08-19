@@ -1,0 +1,27 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-5 shadow-lg text-center custom-card">
+    <h2 class="mb-4 title">Conversor de Moedas</h2>
+
+    <div class="mb-3">
+      <label class="form-label label-text">Valor em Real (R$): </label>
+      <input type="number" class="form-control form-control-lg" [(ngModel)]="valor" min="0" />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label label-text">Converter para:</label>
+      <select class="form-select form-select-lg" [(ngModel)]="moedaDestino">
+        <option value="">Selecione</option>
+        <option *ngFor="let moeda of taxas | keyvalue" [value]="moeda.key">{{ moeda.key }}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success custom-btn btn-lg w-100" (click)="converter()">Converter</button>
+
+    <div *ngIf="resultado !== null" class="mt-4">
+      <p class="fw-bold fs-5 text-primary">
+        {{ valor | currency : 'BRL' }} em {{ moedaDestino }} = {{ resultado | number : '1.2-2' }}
+        {{ moedaDestino }}
+      </p>
+    </div>
+  </div>
+</div>

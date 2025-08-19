@@ -1,0 +1,21 @@
+<div class="card p-4 shadow-sm">
+  <h2 class="mb-4">Calculadora de IMC</h2>
+
+  <div class="mb-3">
+    <label for="form-label">Peso (Kg):</label>
+    <input type="number" class="form-control" [(ngModel)]="peso" min="0" />
+  </div>
+
+  <div class="mb-3">
+    <label for="form-control">Altura (m):</label>
+    <input type="number" class="form-control" [(ngModel)]="altura" min="0" step="0.01" />
+  </div>
+
+  <button class="btn btn-primary custom-btn mb-3" (click)="calcularImc()">Calcular IMC</button>
+
+  <div *ngIf="imc !== null" class="mt-3">
+    <p [style.color]="corSituacao()" class="fw-bold fs-5">
+      IMC: {{ imc.toFixed(2) }} - Situação: {{ situacao }}
+    </p>
+  </div>
+</div>

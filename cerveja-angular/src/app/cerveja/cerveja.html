@@ -1,0 +1,169 @@
+<div class="container mt-4">
+  <!-- Cabeçalho -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-amber">🍺 Catálogo de Cervejas</h1>
+    <p class="lead text-muted">
+      Descubra nossa seleção premium de cervejas artesanais e tradicionais!
+    </p>
+  </div>
+
+  <!-- Filtros - Card Estilizado -->
+  <div class="card border-0 shadow-lg mb-5 bg-amber-light">
+    <div class="card-body p-4">
+      <h4 class="card-title mb-4 text-brown">
+        <i class="bi bi-funnel-fill me-2"></i>Filtrar Cervejas
+      </h4>
+
+      <div class="row g-3">
+        <!-- Tipo -->
+        <div class="col-md-2">
+          <label class="form-label fw-bold text-brown">Tipo</label>
+          <select
+            class="form-select bg-light border-brown"
+            [(ngModel)]="filtro.tipo"
+            (change)="aplicarFiltros()"
+          >
+            <option value="">Todos</option>
+            <option value="Ale" class="text-ale">Ale</option>
+            <option value="Lager" class="text-lager">Lager</option>
+            <option value="Mista" class="text-mista">Mista</option>
+          </select>
+        </div>
+
+        <!-- Estilo -->
+        <div class="col-md-3">
+          <label class="form-label fw-bold text-brown">Estilo</label>
+          <div class="input-group">
+            <span class="input-group-text bg-amber text-white"><i class="bi bi-search"></i></span>
+            <input
+              type="text"
+              class="form-control border-brown"
+              [(ngModel)]="filtro.estilo"
+              (input)="aplicarFiltros()"
+              placeholder="IPA, Pilsen, Stout..."
+            />
+          </div>
+        </div>
+
+        <!-- Cor -->
+        <div class="col-md-2">
+          <label class="form-label fw-bold text-brown">Cor</label>
+          <select
+            class="form-select bg-light border-brown"
+            [(ngModel)]="filtro.cor"
+            (change)="aplicarFiltros()"
+          >
+            <option value="">Todas</option>
+            <option value="Clara">Clara</option>
+            <option value="Amber">Amber</option>
+            <option value="Escura">Escura</option>
+          </select>
+        </div>
+
+        <!-- Amargor -->
+        <div class="col-md-2">
+          <label class="form-label fw-bold text-brown">Amargor</label>
+          <select
+            class="form-select bg-light border-brown"
+            [(ngModel)]="filtro.amargor"
+            (change)="aplicarFiltros()"
+          >
+            <option value="">Todos</option>
+            <option value="Suave">Suave</option>
+            <option value="Médio">Médio</option>
+            <option value="Alto">Alto</option>
+          </select>
+        </div>
+
+        <!-- Corpo -->
+        <div class="col-md-2">
+          <label class="form-label fw-bold text-brown">Corpo</label>
+          <select
+            class="form-select bg-light border-brown"
+            [(ngModel)]="filtro.corpo"
+            (change)="aplicarFiltros()"
+          >
+            <option value="">Todos</option>
+            <option value="Leve">Leve</option>
+            <option value="Médio">Médio</option>
+            <option value="Encorpada">Encorpado</option>
+          </select>
+        </div>
+
+        <!-- Teor Alcoólico -->
+        <div class="col-md-1">
+          <label class="form-label fw-bold text-brown">ABV%</label>
+          <div class="input-group">
+            <input
+              type="number"
+              class="form-control border-brown"
+              [(ngModel)]="filtro.teor"
+              (input)="aplicarFiltros()"
+              placeholder="Min"
+              min="0"
+              max="15"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="d-flex justify-content-between mt-4">
+        <div>
+          <span class="badge bg-amber text-white me-2">
+            {{ cervejasFiltradas.length }} cervejas encontradas
+          </span>
+        </div>
+        <div>
+          <button class="btn btn-outline-brown me-2" (click)="limparFiltros()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Limpar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Cervejas -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <div *ngFor="let cerveja of cervejasFiltradas" class="col">
+      <div class="card h-100 border-0 shadow-sm beer-card">
+        <div class="card-img-container position-relative">
+          <img [src]="cerveja.imagem" alt="{{ cerveja.nome }}" class="card-img-top" />
+          <span
+            class="position-absolute top-0 end-0 badge bg-{{
+              getBadgeClass(cerveja.tipo)
+            }} mt-2 me-2"
+          >
+            {{ cerveja.tipo }}
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-brown">{{ cerveja.nome }}</h5>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="badge bg-amber text-white">{{ cerveja.estilo }}</span>
+            <span class="badge bg-dark text-white">{{ cerveja.teor }}% ABV</span>
+          </div>
+
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Cor:</span>
+              <span class="fw-bold">{{ cerveja.cor }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Amargor:</span>
+              <span class="fw-bold">{{ cerveja.amargor }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Corpo:</span>
+              <span class="fw-bold">{{ cerveja.corpo }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>Estilo:</span>
+              <span class="fw-bold">{{ cerveja.estilo }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

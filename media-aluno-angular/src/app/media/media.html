@@ -1,0 +1,37 @@
+<h2>Cálculo da Média do Aluno</h2>
+
+<div>
+  <label>
+    Nota 1:
+    <input type="number" [(ngModel)]="nota1" min="0" max="10" />
+  </label>
+</div>
+
+<div>
+  <label>
+    Nota 2:
+    <input type="number" [(ngModel)]="nota2" min="0" max="10" />
+  </label>
+</div>
+
+<div>
+  <label>
+    Nota 3:
+    <input type="number" [(ngModel)]="nota3" min="0" max="10" />
+  </label>
+</div>
+
+<button (click)="calcularMedia()">Calcular Média</button>
+
+<div *ngIf="mediaAluno !== null">
+  <p [style.color]="situacao === 'aprovado' ? 'green' : 'red'" class="media-resultado">
+    Média: {{ mediaAluno.toFixed(2) }} — Situação: {{ situacao | uppercase }}
+  </p>
+</div>
+
+<hr />
+
+<div>
+  <p>Total de alunos aprovados: {{ aprovadoCount }}</p>
+  <p>Total de alunos reprovados: {{ reprovadoCount }}</p>
+</div>

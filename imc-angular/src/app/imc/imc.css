@@ -1,0 +1,17 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+input {
+  max-width: 200px;
+}
+
+.custom-btn {
+  background-color: #4da6ff;
+  border: none;
+}
+
+.custom-btn:hover {
+  background-color: #1a75ff;
+}
