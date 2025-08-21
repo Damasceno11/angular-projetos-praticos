@@ -64,7 +64,7 @@ Este repositório reúne uma coleção de exercícios práticos desenvolvidos em
 ### **6. Catálogo de Cervejas Artesanais 🍺**
 
 * Exibição de uma lista de cervejas em **cards estilizados**.
-* Filtros dinâmicos: por **nome, fabricante e tipo**.
+* Filtros dinâmicos: por **nome, estilo, cor amargor,corpo e teor alcoólico (ABV)**.
 * Imagens de cada cerveja exibidas diretamente dos assets do Angular.
 * Utilização de **JSON API** para simulação de backend e persistência dos dados.
 
